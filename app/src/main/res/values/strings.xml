@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Movies</string>
+
+
+    <!-- Home -->
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+
+    <!-- dialog -->
+    <string name="ok">OK</string>
+    <string name="error">ERROR</string>
+    <string name="cancel">Cancel</string>
+    <string name="please_wait">Please wait&#8230;</string>
+    <string name="progress_dialog_title">Loading</string>
+    <string name="unexpected_error_title">Unexpected error</string>
+    <string name="dialog_close">Close</string>
+    <string name="unexpected_error_content">Unexpected error. %s</string>
+    <string name="success">SUCCESS!</string>
+    <string name="try_again">Try Again</string>
+    <string name="dialog_no_connection_try_again">TRY AGAIN</string>
+    <string name="dialog_no_connection_title">No connection</string>
+    <string name="dialog_no_connection_cancel">Cancel</string>
+    <string name="dialog_no_connection_content">Check your internet connection and try again later.</string>
+    <string name="not_authorized_error">Your session has expired, please login again.</string>
+    <string name="yes">yes</string>
+    <string name="no">No</string>
+    <string name="home">Home</string>
+    <string name="serach">Search</string>
+
+    <string name="click_to_exit">Please click BACK again to exit</string>
+    <string name="search_fragment_tag">search_fragment_tag</string>
+    <string name="home_fragment_tag">home_fragment_tag</string>
+
+
+</resources>
