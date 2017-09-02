@@ -1,6 +1,8 @@
 package com.riadh.movies.ui;
 
 
+import android.content.res.Configuration;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -63,7 +65,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void setupDrawer() {
-        sideMenuToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
+        sideMenuToggle = new ActionBarDrawerToggle(this, mDrawerLayout, homeToolbar, R.string.drawer_open, R.string.drawer_close) {
 
 
             public void onDrawerClosed(View view) {
@@ -158,6 +160,19 @@ public class HomeActivity extends BaseActivity {
     private void disableAllMenuBg() {
         drawerHome.setActivated(false);
         drawerSearch.setActivated(false);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        sideMenuToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        sideMenuToggle.onConfigurationChanged(newConfig);
     }
 
 }
