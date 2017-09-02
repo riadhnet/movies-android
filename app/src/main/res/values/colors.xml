@@ -5,7 +5,9 @@
     <color name="colorAccent">#FF4081</color>
 
 
-    <color name="yellow">#f5de50</color>
+    <color name="yellow">#BDB76B</color>
+    <color name="yellow_two">#c1a80e</color>
+    <color name="yellow_three">#2d9b870c</color>
 
     <color name="white">#ffffff</color>
 

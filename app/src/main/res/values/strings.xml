@@ -34,6 +34,7 @@
     <string name="movie_background">movie background</string>
     <string name="no_movies">There is no upcoming movies , try again later</string>
     <string name="upcomming">Upcoming Movies</string>
+    <string name="movie_details">Movie Info</string>
 
 
 </resources>

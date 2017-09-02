@@ -9,6 +9,7 @@ import android.view.View;
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.riadh.movies.R;
 import com.riadh.movies.adapters.MoviesAdapter;
+import com.riadh.movies.app.Constants;
 import com.riadh.movies.app.MyApplication;
 import com.riadh.movies.custom.RecyclerViewEmptySupport;
 import com.riadh.movies.interfaces.RecyclerViewItemSimpleClick;
@@ -16,6 +17,7 @@ import com.riadh.movies.models.MoviesResults;
 import com.riadh.movies.models.Result;
 import com.riadh.movies.service.MyCallbackApi;
 import com.riadh.movies.ui.BaseActivity;
+import com.riadh.movies.ui.MovieDetailsActivity_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.App;
@@ -157,6 +159,6 @@ public class HomeFragment extends Fragment implements RecyclerViewItemSimpleClic
 
     @Override
     public void onViewClicked(View view, Result item) {
-
+        MovieDetailsActivity_.intent(this).extra(Constants.EXTRA.MOVIE, item).start();
     }
 }
