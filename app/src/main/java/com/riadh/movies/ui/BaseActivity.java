@@ -34,6 +34,24 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    protected void configActionBar(boolean displayHomeButton, String title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(displayHomeButton);
+            getSupportActionBar().setDisplayShowHomeEnabled(displayHomeButton);
+            getSupportActionBar().setDisplayShowTitleEnabled(displayHomeButton);
+            getSupportActionBar().setTitle(title);
+        }
+    }
+
+    public void configActionBarWithTitle(int title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setDisplayShowHomeEnabled(false);
+            getSupportActionBar().setDisplayShowTitleEnabled(true);
+            getSupportActionBar().setTitle(title);
+        }
+    }
+
     public void showProgressDialog() {
         if (progressDialog == null) {
             progressDialog = DialogUtil.getDefaultProgressBar(this).build();

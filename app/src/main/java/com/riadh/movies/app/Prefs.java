@@ -11,5 +11,9 @@ public interface Prefs {
     @DefaultString("")
     String accessToken();
 
+    @DefaultString("")
+    String genres();
+
+
 
 }

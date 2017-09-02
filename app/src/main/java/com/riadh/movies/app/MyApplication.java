@@ -2,10 +2,10 @@ package com.riadh.movies.app;
 
 
 import android.app.Application;
-import android.os.StrictMode;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.riadh.movies.models.Genres;
 import com.riadh.movies.service.MyApiEndPointInterface;
 
 import org.androidannotations.annotations.EApplication;
@@ -27,8 +27,8 @@ public class MyApplication extends Application {
 
     @Pref
     public static Prefs_ prefs;
-
     private static MyApiEndPointInterface apiService = null;
+    Genres genres;
 
     public static MyApiEndPointInterface getApiService() {
         if (apiService == null) {
@@ -70,9 +70,19 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+    }
 
-        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-        StrictMode.setVmPolicy(builder.build());
+
+    public Genres getGenres() {
+        if (genres == null) {
+            genres = (new Gson()).fromJson(prefs.genres().get(), Genres.class);
+        }
+        return genres;
+    }
+
+    public void setGenres(Genres genres) {
+        this.genres = genres;
+        MyApplication.prefs.genres().put((new Gson().toJson(genres)));
     }
 
 

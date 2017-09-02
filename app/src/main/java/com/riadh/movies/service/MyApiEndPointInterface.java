@@ -2,6 +2,7 @@ package com.riadh.movies.service;
 
 
 import com.riadh.movies.app.Constants.API;
+import com.riadh.movies.models.Genres;
 import com.riadh.movies.models.MoviesResults;
 
 import retrofit2.Call;
@@ -17,6 +18,9 @@ public interface MyApiEndPointInterface {
 
     @GET(API.SEARCH_MOVIE)
     Call<MoviesResults> searchMovie(@Query("query") String Query, @Query("page") int page);
+
+    @GET(API.MOVIES_GENRE)
+    Call<Genres> getGenre();
 
 
 }

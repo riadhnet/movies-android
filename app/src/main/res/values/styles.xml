@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppThemeBase" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/yellow</item>
         <item name="colorPrimaryDark">@color/black</item>
@@ -14,6 +14,15 @@
         <item name="md_neutral_color">@color/yellow</item>
         <item name="md_negative_color">@color/yellow</item>
 
+    </style>
+
+
+    <style name="AppTheme" parent="@style/AppThemeBase" />
+
+    <style name="NoActionBar" parent="@style/AppThemeBase">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
     </style>
 
 
@@ -47,5 +56,16 @@
         <item name="android:paddingBottom">19dp</item>
     </style>
 
+    <style name="bold_23_white">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="normal_15_white">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 
 </resources>

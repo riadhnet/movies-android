@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.riadh.movies.R;
 import com.riadh.movies.app.MyApplication;
+import com.riadh.movies.ui.fragments.HomeFragment;
+import com.riadh.movies.ui.fragments.HomeFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.App;
@@ -37,7 +39,7 @@ public class HomeActivity extends BaseActivity {
     @App
     MyApplication app;
 
-    // VideoHomeFragment videoHomeFragment;
+    HomeFragment homeFragment;
 
     @ViewById
     TextView drawerHome;
@@ -55,8 +57,8 @@ public class HomeActivity extends BaseActivity {
 
 
         setupDrawer();
-        // videoHomeFragment = new VideoHomeFragment_();
-        // replaceFragment(videoHomeFragment, getString(R.string.video_home_fragment_tag));
+        homeFragment = new HomeFragment_();
+        replaceFragment(homeFragment, getString(R.string.home_fragment_tag));
 
     }
 
@@ -74,13 +76,14 @@ public class HomeActivity extends BaseActivity {
                 invalidateOptionsMenu();
                 disableAllMenuBg();
                 for (Fragment fragment : getSupportFragmentManager().getFragments()) {
-                   /* if (fragment != null && fragment.isVisible()) {
+                    if (fragment != null && fragment.isVisible()) {
                         if (fragment instanceof HomeFragment_) {
                             drawerHome.setActivated(true);
-                        } else if (fragment instanceof SearchFragment_) {
-                            drawerSearch.setActivated(true);
                         }
-                    }*/
+                      /*  else if (fragment instanceof SearchFragment_) {
+                            drawerSearch.setActivated(true);
+                        }*/
+                    }
                 }
             }
         };
@@ -140,7 +143,7 @@ public class HomeActivity extends BaseActivity {
         mDrawerLayout.closeDrawers();
         disableAllMenuBg();
         drawerHome.setActivated(true);
-        //  replaceFragment(videoHomeFragment, getString(R.string.home_fragment_tag));
+        replaceFragment(homeFragment, getString(R.string.home_fragment_tag));
     }
 
     @Click(R.id.drawer_search)
