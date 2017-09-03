@@ -2,9 +2,9 @@
 A sample project that show movies list from themoviesdb
 
 <p align="center">
-  <img src=https://raw.githubusercontent.com/riadhnet/movies-android/development/screenshots/1.png width="350"/>
-  <img src=https://raw.githubusercontent.com/riadhnet/movies-android/development/screenshots/2.png width="350"/>
-  <img src=https://raw.githubusercontent.com/riadhnet/movies-android/development/screenshots/3.png width="350"/>
+  <img src=https://raw.githubusercontent.com/riadhnet/movies-android/development/screenshots/1.png width="250"/>
+  <img src=https://raw.githubusercontent.com/riadhnet/movies-android/development/screenshots/2.png width="250"/>
+  <img src=https://raw.githubusercontent.com/riadhnet/movies-android/development/screenshots/3.png width="250"/>
 </p>
 
 
