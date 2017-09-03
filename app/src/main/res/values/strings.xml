@@ -35,6 +35,9 @@
     <string name="no_movies">There is no upcoming movies , try again later</string>
     <string name="upcomming">Upcoming Movies</string>
     <string name="movie_details">Movie Info</string>
+    <string name="search_movie">Search movie..</string>
+    <string name="empty_search">There is no search result, type another name please.</string>
+    <string name="search">Search</string>
 
 
 </resources>

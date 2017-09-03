@@ -4,7 +4,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.riadh.movies.R;
@@ -18,6 +24,7 @@ import com.riadh.movies.models.Result;
 import com.riadh.movies.service.MyCallbackApi;
 import com.riadh.movies.ui.BaseActivity;
 import com.riadh.movies.ui.MovieDetailsActivity_;
+import com.riadh.movies.utils.MyUtils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.App;
@@ -27,14 +34,17 @@ import org.androidannotations.annotations.ViewById;
 
 import retrofit2.Response;
 
-@EFragment(R.layout.fragment_home)
-public class HomeFragment extends Fragment implements RecyclerViewItemSimpleClick<Result> {
+@EFragment(R.layout.fragment_search)
+public class SearchFragment extends Fragment implements RecyclerViewItemSimpleClick<Result> {
 
     @ViewById(R.id.progress_view)
     CircularProgressView progressView;
 
     @ViewById(R.id.empty_movies)
     View emptyView;
+
+    @ViewById(R.id.input_search)
+    EditText searchTxt;
 
     @App
     MyApplication app;
@@ -48,21 +58,52 @@ public class HomeFragment extends Fragment implements RecyclerViewItemSimpleClic
     MoviesAdapter feedAdapter;
     int pastVisibleItems, visibleItemCount, totalItemCount;
     LinearLayoutManager lm;
-
+    String searchValue = "";
     private MoviesResults moviesResults;
-
     private boolean isCallingApi = false;
 
     @AfterViews
     void onScreenLoaded() {
-        ((BaseActivity) getActivity()).configActionBarWithTitle(R.string.upcomming);
+        ((BaseActivity) getActivity()).configActionBarWithTitle(R.string.search);
         populateMovies();
+
+        searchTxt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
+                    searchValue = searchTxt.getText().toString();
+                    searchMovie(searchValue, 1);
+                    MyUtils.hideSoftKeyboard(v);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        searchTxt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().equals("")) {
+                    searchValue = "";
+                }
+            }
+        });
+
 
     }
 
     private void populateMovies() {
         setupPropertiesAdapter();
-        getMovies(1);
     }
 
     private void setupPropertiesAdapter() {
@@ -79,7 +120,9 @@ public class HomeFragment extends Fragment implements RecyclerViewItemSimpleClic
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getMovies(1);
+                if (!searchValue.equals("")) {
+                    searchMovie(searchValue, 1);
+                }
             }
         });
         swipeRefreshLayout.setColorSchemeResources(R.color.yellow);
@@ -98,7 +141,7 @@ public class HomeFragment extends Fragment implements RecyclerViewItemSimpleClic
 
                     if ((visibleItemCount + pastVisibleItems) >= totalItemCount) {
                         if (moviesResults.getPage() < moviesResults.getTotalPages() && !isCallingApi) {
-                            getMovies(moviesResults.getPage() + 1);
+                            searchMovie(searchValue, moviesResults.getPage() + 1);
                         }
                     }
                 }
@@ -110,8 +153,8 @@ public class HomeFragment extends Fragment implements RecyclerViewItemSimpleClic
 
     }
 
-    public void getMovies(final Integer page) {
-        MyApplication.getApiService().getLatest(page).enqueue(new MyCallbackApi<MoviesResults, BaseActivity>((BaseActivity) getActivity()) {
+    public void searchMovie(String searchValue, final Integer page) {
+        MyApplication.getApiService().searchMovie(searchValue, page).enqueue(new MyCallbackApi<MoviesResults, BaseActivity>((BaseActivity) getActivity()) {
 
             @Override
             public void before() {

@@ -19,6 +19,7 @@ import com.riadh.movies.R;
 import com.riadh.movies.app.MyApplication;
 import com.riadh.movies.ui.fragments.HomeFragment;
 import com.riadh.movies.ui.fragments.HomeFragment_;
+import com.riadh.movies.ui.fragments.SearchFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.App;
@@ -81,10 +82,9 @@ public class HomeActivity extends BaseActivity {
                     if (fragment != null && fragment.isVisible()) {
                         if (fragment instanceof HomeFragment_) {
                             drawerHome.setActivated(true);
-                        }
-                      /*  else if (fragment instanceof SearchFragment_) {
+                        } else if (fragment instanceof SearchFragment_) {
                             drawerSearch.setActivated(true);
-                        }*/
+                        }
                     }
                 }
             }
@@ -141,7 +141,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     @Click(R.id.drawer_home)
-    public void onVideoListClick() {
+    public void homClick() {
         mDrawerLayout.closeDrawers();
         disableAllMenuBg();
         drawerHome.setActivated(true);
@@ -149,11 +149,11 @@ public class HomeActivity extends BaseActivity {
     }
 
     @Click(R.id.drawer_search)
-    public void myVideosClick() {
+    public void searchClick() {
         mDrawerLayout.closeDrawers();
         disableAllMenuBg();
         drawerSearch.setActivated(true);
-        // replaceFragment(new MyVideoFragment_(), getString(R.string.search_fragment_tag));
+        replaceFragment(new SearchFragment_(), getString(R.string.search_fragment_tag));
     }
 
 
