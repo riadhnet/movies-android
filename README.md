@@ -4,6 +4,8 @@ A sample project that show movies list from themoviesdb
 
 ![Screenshots](https://raw.githubusercontent.com/riadhnet/movies-android/development/screenshots/1.png)
 
+![An image](https://raw.githubusercontent.com/riadhnet/movies-android/development/screenshots/1.png) <!-- .element height="50%" width="50%" -->
+
 
 ## Getting Started
 
