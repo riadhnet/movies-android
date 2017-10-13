@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/input_search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@android:drawable/ic_menu_search"
+            android:hint="@string/search_movie"
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
+
+
+        <include
+            layout="@layout/empty_search_view"
+            tools:visibility="gone" />
+
+        <com.riadh.movies.custom.RecyclerViewEmptySupport
+            android:id="@+id/movies_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            tools:listitem="@layout/movie_item" />
+
+
+        <com.github.rahatarmanahmed.cpv.CircularProgressView
+            android:id="@+id/progress_view"
+            android:layout_width="@dimen/circular_progress_dimen"
+            android:layout_height="@dimen/circular_progress_dimen"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            app:cpv_animAutostart="true"
+            app:cpv_color="@color/yellow"
+            app:cpv_indeterminate="true" />
+
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.SwipeRefreshLayout>
+
